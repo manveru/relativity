@@ -16,19 +16,20 @@ describe RelativeTime do
       rt_s = subject.seconds_since_midnight
       t = Time.new
       t_s = (t.hour*60 + t.min)*60 + t.sec # seconds_since_midnight from Time
-      ((t_s-rt_s)%(24*60*60)).should be_within(2).of(0)
+      (((t_s-rt_s).abs+2)%(24*60*60)).should be <= 4
     end
 
     it "hours" do
-      ((subject.hours - Time.new.hour)%24).should be_within(1).of(0)
+      (((subject.hours - Time.new.hour).abs+1)%24).should be <= 2
     end
 
     it "minutes" do
-      ((subject.minutes - Time.new.min)%60).should be_within(1).of(0)
+      (((subject.minutes - Time.new.min).abs+1)%60).should be <= 2
     end
 
     it "seconds" do
-      ((subject.seconds - Time.new.sec)%60).should be_within(2).of(0)
+      (((subject.seconds - Time.new.sec).abs+2)%60).should be <= 4
+    end
     end
 
   end
