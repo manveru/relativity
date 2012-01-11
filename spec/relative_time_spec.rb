@@ -78,6 +78,10 @@ describe RelativeTime do
       rt.nano_seconds.should == 457834889
     end
 
+  end
+
+  context "overflow / underflow " do
+
     it "normalizes on overflow of hours" do
       rt = RelativeTime.new(24,1,2,3)
       rt.hours.should == 0
@@ -90,6 +94,22 @@ describe RelativeTime do
       rt = RelativeTime.new(-3,1,2,3)
       rt.hours.should == 21
       rt.minutes.should == 1
+      rt.seconds.should == 2
+      rt.nano_seconds.should == 3
+    end
+
+    it "normalizes on overflow of minutes" do
+      rt = RelativeTime.new(23,65,2,3)
+      rt.hours.should == 0
+      rt.minutes.should == 5
+      rt.seconds.should == 2
+      rt.nano_seconds.should == 3
+    end
+
+    it "normalizes on underflow of minutes" do
+      rt = RelativeTime.new(1,-100,2,3)
+      rt.hours.should == 23
+      rt.minutes.should == 20
       rt.seconds.should == 2
       rt.nano_seconds.should == 3
     end
