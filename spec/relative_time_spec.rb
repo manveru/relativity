@@ -78,8 +78,12 @@ describe RelativeTime do
       rt.nano_seconds.should == 457834889
     end
 
-    it "normalizes on overflow and underflow" do
-      pending
+    it "normalizes on overflow of hours" do
+      rt = RelativeTime.new(24,1,2,3)
+      rt.hours.should == 0
+      rt.minutes.should == 1
+      rt.seconds.should == 2
+      rt.nano_seconds.should == 3
     end
 
   end

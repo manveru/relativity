@@ -18,7 +18,7 @@ class RelativeTime
       ss = t.sec
       nn = t.nsec
     end
-    @seconds_since_midnight = (hh * 3600) + (mm * 60) + ss + BigDecimal(nn)/BigDecimal(1000000000)
+    @seconds_since_midnight = ((hh * 3600) + (mm * 60) + ss + BigDecimal(nn)/BigDecimal(1000000000))%(24*3600)
   end
 
   def hours
