@@ -31,8 +31,8 @@ describe RelativeTime do
       (((subject.seconds - Time.new.sec).abs+2)%60).should be <= 4
     end
 
-    it "seconds_since_midnight should be float" do
-      subject.seconds_since_midnight.should be_kind_of(Float)
+    it "seconds_since_midnight should be BigDecimal" do
+      subject.seconds_since_midnight.should be_kind_of(BigDecimal)
     end
 
     it "hours should be Integer" do
@@ -49,6 +49,37 @@ describe RelativeTime do
 
     it "nano_seconds should be Integer" do
       subject.nano_seconds.should be_kind_of(Integer)
+    end
+
+    it "new with argument hours" do
+      RelativeTime.new(10).hours.should == 10
+      rt = RelativeTime.new(20)
+      rt.hours.should == 20
+      rt.minutes.should == 0
+      rt.seconds.should == 0
+      rt.nano_seconds.should == 0
+    end
+
+    it "new with argument minutes" do
+      rt = RelativeTime.new(10,25)
+      rt.minutes.should == 25
+      rt.seconds.should == 0
+      rt.nano_seconds.should == 0
+    end
+
+    it "new with argument seconds" do
+      rt = RelativeTime.new(10,37,45)
+      rt.seconds.should == 45
+      rt.nano_seconds.should == 0
+    end
+
+    it "new with argument nano_seconds" do
+      rt = RelativeTime.new(0,23,45,457834889)
+      rt.nano_seconds.should == 457834889
+    end
+
+    it "normalizes on overflow and underflow" do
+      pending
     end
 
   end
