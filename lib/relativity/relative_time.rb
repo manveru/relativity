@@ -40,7 +40,13 @@ class RelativeTime
   end
 
   def to_s
-    "23:45:35"
+    [hours, minutes, seconds].map{|e| rjust_2_0(e.to_s)}.join(':')
   end
+
+  def rjust_2_0(s)
+    s.rjust(2,'0')
+  end
+
+  private :rjust_2_0
 
 end

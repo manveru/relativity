@@ -90,5 +90,10 @@ describe RelativeTime do
       subject.to_s.should match(/\d{2}:\d{2}:\d{2}/)
     end
 
+    it "does correct hours, minutes, seconds for to_s" do
+      rt = RelativeTime.new(0,23,45,457834889)
+      rt.to_s.should == "00:23:45"
+    end
+
   end
 end
