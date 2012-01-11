@@ -10,7 +10,12 @@ will be built on top, so the ranges of opening hours can be represented.
 == Example
 
   require 'relativity'
-  rt = RelativeTime.new #=> 21:17:40
   opens_at = RelativeTime.new(9) #=> 09:00:00
   closes_at = RelativeTime.new(18,30) #=> 18:30:00
+
+  rt = RelativeTime.new #=> 21:17:40
   rt.seconds_since_midnight #=> #<BigDecimal:9d35d48,'0.7666056825 7238E5',18(45)>
+  rt.hours #=> 21
+  rt.minutes #=> 17
+  rt.seconds #=> 40
+  rt.nano_seconds #=> 568257238
