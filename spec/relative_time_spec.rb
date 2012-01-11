@@ -30,6 +30,25 @@ describe RelativeTime do
     it "seconds" do
       (((subject.seconds - Time.new.sec).abs+2)%60).should be <= 4
     end
+
+    it "seconds_since_midnight should be float" do
+      subject.seconds_since_midnight.should be_kind_of(Float)
+    end
+
+    it "hours should be Integer" do
+      subject.hours.should be_kind_of(Integer)
+    end
+
+    it "minutes should be Integer" do
+      subject.minutes.should be_kind_of(Integer)
+    end
+
+    it "seconds should be Integer" do
+      subject.seconds.should be_kind_of(Integer)
+    end
+
+    it "nano_seconds should be Integer" do
+      subject.nano_seconds.should be_kind_of(Integer)
     end
 
   end
