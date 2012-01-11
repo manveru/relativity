@@ -7,11 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Relativity::VERSION
   s.authors     = ["Peter Vandenabeele"]
   s.email       = ["peter@vandenabeele.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
-
-  s.rubyforge_project = "relativity"
+  s.homepage    = "https://github.com/petervandenabeele/relativity"
+  s.summary     = %q{time and time_ranges relative to day, week, month, quarter etc.}
+  s.description = s.summary
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -19,6 +17,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency 'rspec', '>= 2.7'
+  s.add_dependency 'bundler', '>= 1.0'
 end
