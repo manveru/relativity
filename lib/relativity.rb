@@ -1,5 +1,2 @@
-require "relativity/version"
-
-module Relativity
-  # Your code goes here...
-end
+require 'relativity/version'
+require 'relativity/relative_time'
