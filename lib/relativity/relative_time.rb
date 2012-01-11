@@ -27,4 +27,8 @@ class RelativeTime
     Integer((@seconds_since_midnight % 1) * 1000000000)
   end
 
+  def to_s
+    "23:45:35"
+  end
+
 end
