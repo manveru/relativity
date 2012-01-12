@@ -1,0 +1,18 @@
+Refactoring:
+
+* Use DayTime, WeekTime, WeekDay, QuarterTime, ...
+* use "seconds_since_start" (instead of "seconds_since_midnight)
+
+Features to be implemented:
+
+day_time = DayTime.new
+week_time = WeekTime.new
+week_day = WeekDay.new
+
+day_times (array of day_time entries)
+
+day_time_range (range of days_time entries)
+week_time_range
+week_day_range
+
+ActiveRecord coupling (Aggregation ?)
