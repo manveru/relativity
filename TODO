@@ -2,6 +2,7 @@ Refactoring:
 
 * Use DayTime, WeekTime, WeekDay, QuarterTime, ...
 * use "seconds_since_start" (instead of "seconds_since_midnight)
+* make an Exception class
 
 Features to be implemented:
 
