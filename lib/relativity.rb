@@ -1,2 +1,2 @@
 require 'relativity/version'
-require 'relativity/relative_time'
+require 'relativity/day_time'
