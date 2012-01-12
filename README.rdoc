@@ -3,19 +3,19 @@
 Time, Date and DateTime classes don't have a mode for working with relative
 time inside 1 day (or 1 week, 1 month, 1 quarter, etc.).
 
-A RelativeTime object, relative to a day or a week, is useful to describe
-e.g. opening hours of a business. In a next phase, a RelativeTimeRange
-will be built on top, so the ranges of opening hours can be represented.
+A relative time object, relative to a day or a week, is useful to describe
+e.g. opening hours of a business. In a next phase, time ranges will
+be built on top, so the ranges of opening hours can be represented.
 
 == Example
 
   require 'relativity'
-  opens_at = RelativeTime.new(9) #=> 09:00:00
-  closes_at = RelativeTime.new(18,30) #=> 18:30:00
+  opens_at = DayTime.new(9) #=> 09:00:00
+  closes_at = DayTime.new(18,30) #=> 18:30:00
 
-  rt = RelativeTime.new #=> 21:17:40
-  rt.seconds_since_midnight #=> #<BigDecimal:9d35d48,'0.7666056825 7238E5',18(45)>
-  rt.hours #=> 21
-  rt.minutes #=> 17
-  rt.seconds #=> 40
-  rt.nano_seconds #=> 568257238
+  dt = DayTime.new #=> 21:17:40
+  dt.seconds_since_start #=> #<BigDecimal:9d35d48,'0.7666056825 7238E5',18(45)>
+  dt.hours #=> 21
+  dt.minutes #=> 17
+  dt.seconds #=> 40
+  dt.nano_seconds #=> 568257238
