@@ -2,7 +2,7 @@ class DayTime
 
   require 'bigdecimal'
 
-  attr_reader :seconds_since_midnight
+  attr_reader :seconds_since_start
 
   def initialize(hours = nil, minutes = nil, seconds = nil, nano_seconds = nil)
     super()
@@ -18,25 +18,25 @@ class DayTime
       ss = t.sec
       nn = t.nsec
     end
-    @seconds_since_midnight = ((hh * 3600) + (mm * 60) + ss + BigDecimal(nn)/BigDecimal(1000000000))%(24*3600)
+    @seconds_since_start = ((hh * 3600) + (mm * 60) + ss + BigDecimal(nn)/BigDecimal(1000000000))%(24*3600)
   end
 
   def hours
-    hours = Integer(@seconds_since_midnight/(3600)).tap do |h|
+    hours = Integer(@seconds_since_start/(3600)).tap do |h|
       raise "Internal ERROR in DayTime; hours is #{h}" if (h < 0 || h > 23)
     end
   end
 
   def minutes
-    Integer(@seconds_since_midnight / 60) % 60
+    Integer(@seconds_since_start / 60) % 60
   end
 
   def seconds
-    Integer(@seconds_since_midnight) % 60
+    Integer(@seconds_since_start) % 60
   end
 
   def nano_seconds
-    Integer((@seconds_since_midnight % 1) * 1000000000)
+    Integer((@seconds_since_start % 1) * 1000000000)
   end
 
   def to_s

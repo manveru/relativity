@@ -8,14 +8,14 @@ describe DayTime do
 
   context "time in a day" do
 
-    it "seconds_since_midnight" do
-      lambda { subject.seconds_since_midnight }.should_not raise_error
+    it "seconds_since_start" do
+      lambda { subject.seconds_since_start }.should_not raise_error
     end
 
     it "new creates a DayTime close to now" do
-      rt_s = subject.seconds_since_midnight
+      rt_s = subject.seconds_since_start
       t = Time.new
-      t_s = (t.hour*60 + t.min)*60 + t.sec # seconds_since_midnight from Time
+      t_s = (t.hour*60 + t.min)*60 + t.sec # seconds_since_start from Time
       (((t_s-rt_s).abs+2)%(24*60*60)).should be <= 4
     end
 
@@ -31,8 +31,8 @@ describe DayTime do
       (((subject.seconds - Time.new.sec).abs+2)%60).should be <= 4
     end
 
-    it "seconds_since_midnight should be BigDecimal" do
-      subject.seconds_since_midnight.should be_kind_of(BigDecimal)
+    it "seconds_since_start should be BigDecimal" do
+      subject.seconds_since_start.should be_kind_of(BigDecimal)
     end
 
     it "hours should be Integer" do
