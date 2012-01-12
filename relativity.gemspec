@@ -18,5 +18,9 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency 'rspec', '>= 2.7'
-  s.add_dependency 'bundler', '>= 1.0'
+  s.add_development_dependency 'guard-rspec', '>= 0.5'
+  if RUBY_PLATFORM.match(/linux/)
+    s.add_development_dependency 'rb-inotify'
+    s.add_development_dependency 'libnotify'
+  end
 end
