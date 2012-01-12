@@ -1,4 +1,4 @@
-class RelativeTime
+class DayTime
 
   require 'bigdecimal'
 
@@ -23,7 +23,7 @@ class RelativeTime
 
   def hours
     hours = Integer(@seconds_since_midnight/(3600)).tap do |h|
-      raise "Internal ERROR in RelativeTime; hours is #{h}" if (h < 0 || h > 23)
+      raise "Internal ERROR in DayTime; hours is #{h}" if (h < 0 || h > 23)
     end
   end
 
